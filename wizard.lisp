@@ -58,7 +58,7 @@
     (cond ((member object
                    (objects-at *location* *objects* *object-locations*))
              (push (list object 'body) *object-locations*)
-             `(you are no carrying the ,object))
+             `(you are now carrying the ,object))
           (t '(you cannot get that.))))
 
 (defun inventory ()
@@ -95,7 +95,7 @@
         '(i do not know that command.)))
 
 (defun game-repl ()
-    (let (cmd (game-read))
+    (let ((cmd (game-read)))
         (unless (eq (car cmd) 'quit)
             (game-print (game-eval cmd))
             (game-repl))))
